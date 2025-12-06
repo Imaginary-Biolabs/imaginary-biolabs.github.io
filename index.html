@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imaginary Biolabs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: var(--light);font:var(--font-body);display: flex; justify-content: center; align-items: center; flex-direction: column;min-height: 100dvh;margin:0;padding:0;">
+    <img src="assets/logo.png" alt="Imaginary Biolabs" style="height: 15vh;margin-top: 20vh;align-self: center;">
+    <p style="font:var(--font-body);font-size:15px;text-align: center;margin-top: 4vh;max-width: 500px;">
+        Imaginary Biolabs is an AI company in the field of synthetic biology. We want to achieve the engineering of biological systems without limit to imagination, and we believe that the way to get there is to build strong computational software that understands the complexity of biology.
+    </p>
+    <p style="font:var(--font-body);font-size:15px;text-align: center;margin-top: 1vh;max-width:500px;">
+        We build infrastructure, curate data, craft models. And we want to share our excitement for synthetic biology, fostering community with a platform to inform and exchange.
+    </p>
+    <p style="font:var(--font-body);font-size:15px;text-align: center;margin-top: 1vh;max-width: 500px;">
+        We just founded and this page is currently under construction, please check back in a few weeks. Until then, you can reach out to us at <span>company</span>&#64;<span>imaginary</span>&#46;<span>bio</span>.
+    </p>
+    <div style="display: flex;justify-content: center; gap: 4vw;margin-top: auto;margin-bottom: 4vh;align-self: center;width: 100%;align-items: center;flex-direction: row;">
+        <span class="link" data-page="imprint">Imprint</span>
+        <span class="link" data-page="privacy">Privacy</span>
+    </div>
+
+    <!-- Page Overlays -->
+    <div id="page-overlay" class="page-overlay">
+        <button id="close-btn" class="close-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+        </button>
+        <div id="page-content" class="page-content"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

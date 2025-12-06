@@ -1,0 +1,267 @@
+:root {
+    --light: #F8F7F5;
+    --dark: #212423;
+    --font-logo: 24px 'Bayon', sans-serif;
+    --font-header: normal bold 24px 'Cabin Sketch', sans-serif;
+    --font-body: normal 400 15px 'Baloo 2', sans-serif;
+    --font-code: normal 400 15px 'Cutive Mono', monospace;
+}
+
+@font-face {
+    font-family: 'Bayon';
+    src: url('fonts/Bayon/Bayon-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Cabin Sketch';
+    src: url('fonts/Cabin_Sketch/CabinSketch-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Baloo 2';
+    src: url('fonts/Baloo_2/static/Baloo2-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Cutive Mono';
+    src: url('fonts/Cutive_Mono/CutiveMono-Regular.ttf') format('truetype');
+}
+
+.link {
+    font:var(--font-body);
+    color: var(--medium);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.link:hover {
+    color: var(--dark);
+}
+
+/* Page Overlay */
+.page-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--light);
+    display: none;
+    flex-direction: column;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.page-overlay.visible {
+    opacity: 1;
+}
+
+.page-overlay.hidden {
+    opacity: 0;
+}
+
+/* Close Button */
+.close-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 48px;
+    height: 48px;
+    background: var(--light);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--medium);
+    z-index: 1001;
+}
+
+.close-button:hover {
+    color: var(--dark);
+}
+
+.close-button svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Page Content */
+.page-content {
+    padding: 80px 40px 40px;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    box-sizing: border-box;
+}
+
+.page-content.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.page-content h1 {
+    font: var(--font-header);
+    color: var(--dark);
+    margin-bottom: 24px;
+}
+
+.page-content h4 {
+    font: var(--font-header);
+    font-size: 18px;
+    color: var(--dark);
+    margin-top: 24px;
+    margin-bottom: 16px;
+}
+
+.page-content ul {
+    margin: 16px 0;
+    padding-left: 20px;
+}
+
+.page-content li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+.page-content p {
+    font: var(--font-body);
+    color: var(--dark);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    text-align: justify;
+}
+
+.page-content p:last-child {
+    margin-bottom: 0;
+}
+
+.page-content a {
+    color: var(--dark);
+    text-decoration: underline;
+    word-break: break-word;
+}
+
+.page-content a:hover {
+    color: var(--dark);
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    /* Landing page adjustments for mobile */
+    body img {
+        height: 16vh !important;
+        margin-top: 30vh !important;
+    }
+    
+    body > p {
+        font-size: 13px !important;
+        margin-top: 3vh !important;
+    }
+    
+    body > div {
+        flex-direction: column;
+        gap: 2vh !important;
+        margin-bottom: 6vh !important;
+    }
+    
+    .link {
+        font-size: 14px !important;
+    }
+
+    /* Close button adjustments */
+    .close-button {
+        top: 12px;
+        left: 12px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .close-button svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Page content adjustments */
+    .page-content {
+        padding: 60px 20px 20px;
+        max-width: 100%;
+    }
+
+    .page-content h1 {
+        font-size: 20px;
+        margin-bottom: 18px;
+    }
+
+    .page-content p {
+        font-size: 14px;
+        line-height: 1.5;
+        margin-bottom: 14px;
+    }
+
+    .page-content h4 {
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+    .page-content ul {
+        margin: 12px 0;
+        padding-left: 16px;
+    }
+
+    .page-content li {
+        margin-bottom: 6px;
+    }
+
+    .page-content a {
+        word-break: break-all;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Extra small mobile adjustments */
+    body img {
+        height: 12vh !important;
+        margin-top: 30vh !important;
+    }
+    
+    body > p {
+        font-size: 13px !important;
+        padding: 0 20px !important;
+    }
+    
+    body > div {
+        gap: 2vh !important;
+    }
+
+    .close-button {
+        top: 8px;
+        left: 8px;
+        width: 36px;
+        height: 36px;
+    }
+
+    .close-button svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .page-content {
+        padding: 50px 16px 16px;
+    }
+
+    .page-content h1 {
+        font-size: 18px;
+        margin-bottom: 16px;
+    }
+
+    .page-content p {
+        font-size: 13px;
+        margin-bottom: 12px;
+    }
+}
