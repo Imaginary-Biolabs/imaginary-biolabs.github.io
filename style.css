@@ -156,6 +156,7 @@
     /* Landing page adjustments for mobile */
     body img {
         height: 16vh !important;
+        margin-top: 2vh !important;
     }
     
     body > p {
@@ -225,6 +226,7 @@
     /* Extra small mobile adjustments */
     body img {
         height: 12vh !important;
+        margin-top: 2vh !important;
     }
     
     body > p {
