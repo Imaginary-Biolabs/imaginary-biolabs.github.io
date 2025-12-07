@@ -157,6 +157,7 @@
     body img {
         height: 16vh !important;
         margin-top: 2vh !important;
+        margin-bottom: 20px !important;
     }
     
     body > p {
@@ -227,6 +228,7 @@
     body img {
         height: 12vh !important;
         margin-top: 2vh !important;
+        margin-bottom: 20px !important;
     }
     
     body > p {
