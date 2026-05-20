@@ -81,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         pageContent.classList.remove('fade-in');
         pageContent.innerHTML = '<h1>Loading...</h1>';
 
+        overlay.removeAttribute('hidden');
         overlay.classList.remove('hidden');
         overlay.style.display = 'flex';
         requestAnimationFrame(() => {
@@ -135,10 +136,10 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             if (!overlay.classList.contains('visible')) {
                 overlay.style.display = 'none';
-                // Clear content when closing
+                overlay.setAttribute('hidden', '');
                 pageContent.innerHTML = '';
             }
-        }, 300); // Wait for fade out animation
+        }, 300);
     }
 
     // Event listeners for links

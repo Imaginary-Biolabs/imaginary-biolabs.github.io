@@ -21,22 +21,15 @@
     --foreground: var(--sand-900);
 
     --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    --font-logo: 1.125rem "Bayon", sans-serif;
-    --font-mono: "Cutive Mono", ui-monospace, monospace;
-}
+    --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 
-@font-face {
-    font-family: "Bayon";
-    src: url("fonts/Bayon/Bayon-Regular.ttf") format("truetype");
-    font-weight: 400;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Cutive Mono";
-    src: url("fonts/Cutive_Mono/CutiveMono-Regular.ttf") format("truetype");
-    font-weight: 400;
-    font-display: swap;
+    /* Organic vertical rhythm — varied steps, not a uniform grid */
+    --space-tight: 0.875rem;
+    --space-snug: 1.35rem;
+    --space-comfort: clamp(1.75rem, 4.5vw, 2.65rem);
+    --space-room: clamp(2.85rem, 7.5vw, 4.25rem);
+    --space-air: clamp(3.75rem, 10vw, 5.75rem);
+    --space-breath: clamp(4.5rem, 12vw, 7rem);
 }
 
 *,
@@ -83,7 +76,11 @@ body {
 .site-header {
     display: flex;
     justify-content: center;
-    padding: clamp(1.5rem, 4vw, 2.25rem) 1.5rem 0;
+    padding:
+        max(clamp(1.75rem, 5vw, 2.75rem), env(safe-area-inset-top))
+        max(1.5rem, env(safe-area-inset-right))
+        clamp(0.35rem, 1.5vw, 0.65rem)
+        max(1.5rem, env(safe-area-inset-left));
 }
 
 .wordmark {
@@ -105,11 +102,25 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: clamp(2rem, 5vw, 3rem);
+    gap: 0;
     margin: 0 auto;
-    padding: clamp(0.5rem, 2vw, 1rem) 1.5rem 2rem;
+    padding:
+        clamp(1.15rem, 3.5vw, 2rem)
+        max(1.5rem, env(safe-area-inset-right))
+        max(clamp(3rem, 8vw, 4.5rem), env(safe-area-inset-bottom))
+        max(1.5rem, env(safe-area-inset-left));
     max-width: 42rem;
     width: 100%;
+}
+
+/* Secondary content: about → founder → contact */
+.landing-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: calc(var(--space-breath) * 0.5);
+    gap: var(--space-comfort);
 }
 
 /* Hero */
@@ -129,11 +140,11 @@ body {
 }
 
 .hero-subhead {
-    margin: 0.875rem auto 0;
+    margin: var(--space-snug) auto 0;
     max-width: 32rem;
     font-size: clamp(1rem, 2.5vw, 1.0625rem);
     font-weight: 500;
-    line-height: 1.45;
+    line-height: 1.55;
     color: var(--sand-700);
 }
 
@@ -141,8 +152,8 @@ body {
 .waitlist-form {
     display: flex;
     flex-direction: column;
-    gap: 0.625rem;
-    margin-top: 1.75rem;
+    gap: 0.75rem;
+    margin-top: var(--space-comfort);
     width: 100%;
     max-width: 22rem;
     margin-left: auto;
@@ -173,8 +184,9 @@ body {
 }
 
 .waitlist-message {
-    margin: 0.75rem 0 0;
+    margin: var(--space-tight) 0 0;
     font-size: 0.875rem;
+    line-height: 1.5;
     color: var(--sand-600);
 }
 
@@ -243,7 +255,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.875rem;
+    gap: var(--space-snug);
     text-align: center;
 }
 
@@ -265,14 +277,14 @@ body {
 }
 
 .founder-role {
-    margin: 0.2rem 0 0;
+    margin: 0.35rem 0 0;
     font-size: 0.875rem;
     color: var(--sand-600);
 }
 
 .founder-linkedin {
     display: inline-block;
-    margin-top: 0.5rem;
+    margin-top: var(--space-tight);
     font-size: 0.8125rem;
     color: var(--sand-600);
     text-decoration: none;
@@ -292,9 +304,10 @@ body {
 }
 
 .section-eyebrow {
-    margin: 0 0 0.75rem;
+    margin: 0 0 var(--space-snug);
     font-family: var(--font-mono);
     font-size: 0.6875rem;
+    font-weight: 400;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--sand-600);
@@ -304,7 +317,7 @@ body {
 .about-body {
     margin: 0;
     font-size: 0.9375rem;
-    line-height: 1.62;
+    line-height: 1.72;
     color: var(--sand-700);
     text-wrap: pretty;
 }
@@ -315,8 +328,9 @@ body {
 }
 
 .contact-label {
-    margin: 0 0 0.35rem;
+    margin: 0 0 var(--space-tight);
     font-size: 0.8125rem;
+    font-weight: 400;
     color: var(--sand-600);
 }
 
@@ -338,9 +352,18 @@ body {
 .site-footer {
     display: flex;
     justify-content: center;
-    gap: clamp(1.5rem, 4vw, 2.5rem);
-    padding: 1.5rem 1.5rem 2.5rem;
+    padding:
+        clamp(2rem, 5vw, 3rem)
+        max(1.5rem, env(safe-area-inset-right))
+        max(clamp(2.25rem, 6vw, 3.5rem), env(safe-area-inset-bottom))
+        max(1.5rem, env(safe-area-inset-left));
     margin-top: auto;
+}
+
+.site-footer nav {
+    display: flex;
+    justify-content: center;
+    gap: clamp(1.5rem, 4vw, 2.5rem);
 }
 
 .link {
