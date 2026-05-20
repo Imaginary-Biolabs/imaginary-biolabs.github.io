@@ -1,5 +1,58 @@
-// Page switching functionality
+function wireObfuscatedLinks(root = document) {
+    root.querySelectorAll('a.obf-mailto').forEach((link) => {
+        const address = link.textContent.trim().replace(/\s+/g, '');
+        if (address.includes('@')) {
+            link.href = 'mailto:' + address;
+        }
+    });
+
+    root.querySelectorAll('a.obf-https').forEach((link) => {
+        const target = link.textContent.trim().replace(/\s+/g, '');
+        link.href = target.startsWith('http') ? target : 'https://' + target;
+    });
+}
+
+// Page switching + waitlist (Web3Forms)
 document.addEventListener('DOMContentLoaded', () => {
+    wireObfuscatedLinks();
+
+    const waitlistForm = document.getElementById('waitlist-form');
+    const waitlistMessage = document.getElementById('waitlist-message');
+    const submitButton = waitlistForm?.querySelector('button[type="submit"]');
+
+    if (waitlistForm) {
+        waitlistForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            if (!waitlistMessage || !submitButton) return;
+
+            waitlistMessage.hidden = false;
+            waitlistMessage.classList.remove('is-error');
+            waitlistMessage.textContent = 'Submitting…';
+            submitButton.disabled = true;
+
+            try {
+                const response = await fetch(waitlistForm.action, {
+                    method: 'POST',
+                    body: new FormData(waitlistForm),
+                });
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    waitlistMessage.textContent = "You're on the list — we'll be in touch.";
+                    waitlistForm.reset();
+                } else {
+                    throw new Error(data.message || 'Submission failed');
+                }
+            } catch {
+                waitlistMessage.classList.add('is-error');
+                waitlistMessage.textContent =
+                    'Something went wrong. Please try again in a moment.';
+            } finally {
+                submitButton.disabled = false;
+            }
+        });
+    }
+
     const links = document.querySelectorAll('.link');
     const overlay = document.getElementById('page-overlay');
     const closeBtn = document.getElementById('close-btn');
@@ -59,7 +112,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function displayContent(html) {
         pageContent.innerHTML = html;
-        
+        wireObfuscatedLinks(pageContent);
+
         // Calculate how much time has passed since page opened
         const elapsed = Date.now() - pageOpenTime;
         const remainingDelay = Math.max(0, FADE_IN_DELAY - elapsed);

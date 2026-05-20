@@ -3,37 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imaginary Biolabs</title>
+    <meta name="description" content="AI infrastructure for programmable biology. A platform for developing and applying ML models to design biomolecules.">
+    <title>Imaginary Biolabs — AI Infrastructure for Programmable Biology</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body style="background-color: var(--light);font:var(--font-body);display: flex; justify-content: center; align-items: center; flex-direction: column;min-height: 100dvh;margin:0;padding:0;">
-    <div style="display: flex;justify-content: center;align-self: center;align-items: center;flex-direction: column;margin:20px;margin-top: auto;gap:20px;">
-        <img src="assets/logo.png" alt="Imaginary Biolabs" style="height: 15vh;align-self: center;margin-top: 40px;">
-        <p style="font:var(--font-body);font-size:15px;text-align: center;max-width: 700px;margin:0px;">
-            Biology is becoming programmable.
-        </p>
-        <p style="font:var(--font-body);font-size:15px;text-align: center;max-width: 700px;margin:0px;">
-            Imaginary Biolabs is building the computational foundation that enables this transformation. Our vision is to move molecular development into the computer, where proteins and molecular systems can be designed, evaluated, and iteratively refined before entering the laboratory.
-        </p><p style="font:var(--font-body);font-size:15px;text-align: center;max-width: 700px;margin:0px;">
-            We are developing an AI-native platform for biological engineering, beginning with structure-based molecular machine learning. The platform combines two tightly connected layers. First, a dedicated development environment for AI engineers to build, train, benchmark, and publish molecular machine learning models using standardized structural data pipelines. Second, a molecular design interface that makes these models directly usable for biotechnologists, enabling hypothesis-driven biomolecule design and preparation for experimental validation.
-        </p><p style="font:var(--font-body);font-size:15px;text-align: center;max-width: 700px;margin:0px;">
-            By integrating model development and molecule design within a single system, we aim to translate advanced machine learning into practical experimental value. The platform is designed to integrate seamlessly with wet-lab workflows, linking computational design with structured experimental feedback. We are currently forming partnerships with experimental groups interested in AI-integrated development programs.
-        </p><p style="font:var(--font-body);font-size:15px;text-align: center;max-width: 700px;margin:0px;">
-            Imaginary Biolabs was recently founded, and this website is currently under construction.
-        </p>
-        <p style="font:var(--font-body);font-size:15px;text-align: center;max-width: 700px;margin:0px;">
-            For inquiries, please contact: <span>hello</span>&#64;<span>imaginary</span>&#46;<span>bio</span>
-        </p>
-    </div>
-    <div style="display: flex;justify-content: center; gap: 4vw;margin-top: auto;margin-bottom: 4vh;align-self: center;width: 100%;align-items: center;flex-direction: row;">
+<body>
+    <header class="site-header">
+        <a href="/" class="wordmark" aria-label="Imaginary Biolabs">
+            <img src="assets/logo.png" alt="Imaginary Biolabs" width="196" height="80" class="wordmark-icon">
+        </a>
+    </header>
+
+    <main class="landing">
+        <section class="hero" aria-labelledby="hero-heading">
+            <h1 id="hero-heading" class="hero-headline">AI infrastructure for programmable biology.</h1>
+            <p class="hero-subhead">A platform for developing and applying ML models to design biomolecules.</p>
+
+            <form id="waitlist-form" class="waitlist-form" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="e6c38e16-eb39-4ae5-aada-8836279dc027">
+                <input type="hidden" name="subject" value="Imaginary Biolabs waitlist">
+                <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off">
+                <label class="visually-hidden" for="waitlist-email">Email address</label>
+                <input
+                    id="waitlist-email"
+                    class="waitlist-input"
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    autocomplete="email"
+                    required
+                >
+                <button type="submit" class="btn btn-primary">
+                    <span>Join waitlist</span>
+                    <svg class="btn-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </form>
+            <p id="waitlist-message" class="waitlist-message" role="status" aria-live="polite" hidden></p>
+        </section>
+
+        <section class="about" aria-labelledby="about-heading">
+            <p class="section-eyebrow" id="about-heading">What we build</p>
+            <p class="about-body">
+                Imaginary Biolabs builds an AI-native platform for molecular machine learning — standardized data pipelines, curated benchmarks, and integrated tools for model development and molecular design. Researchers can build, evaluate, and apply ML models for biomolecule engineering without assembling fragmented tooling.
+            </p>
+        </section>
+
+        <section class="founder" aria-labelledby="founder-heading">
+            <img
+                src="assets/profile_light_small.png"
+                alt="Tim Kucera"
+                width="96"
+                height="96"
+                class="founder-photo"
+                loading="lazy"
+            >
+            <div class="founder-copy">
+                <h2 id="founder-heading" class="founder-name">Tim Kucera</h2>
+                <p class="founder-role">Founder</p>
+                <a class="founder-linkedin obf-https" href="#" rel="noopener noreferrer" target="_blank">
+                    <span>www</span>&#46;<span>linkedin</span>&#46;<span>com</span>/<span>in</span>/<span>timkucera</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="contact">
+            <p class="contact-label">Get in touch</p>
+            <a id="contact-email" class="contact-email obf-mailto" href="#">
+                <span>hello</span>&#64;<span>imaginary</span>&#46;<span>bio</span>
+            </a>
+        </section>
+    </main>
+
+    <footer class="site-footer">
         <span class="link" data-page="imprint">Imprint</span>
         <span class="link" data-page="privacy">Privacy</span>
-    </div>
+    </footer>
 
-    <!-- Page Overlays -->
     <div id="page-overlay" class="page-overlay">
-        <button id="close-btn" class="close-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <button id="close-btn" class="close-button" type="button" aria-label="Close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M18 6L6 18M6 6l12 12"/>
             </svg>
         </button>
