@@ -207,7 +207,7 @@
         <div class="pipeline-friction-cell">
             <p class="pipeline-problem slide-card">
             <img class="pipeline-problem-icon" src="assets/icons/lightning_icon.svg" alt="" width="14" height="14" aria-hidden="true" />
-            <span class="pipeline-problem-text">Technicality</span>
+            <span class="pipeline-problem-text">Technically challenging</span>
           </p>
           </div><div class="pipeline-friction-cell">
             <p class="pipeline-problem slide-card">
@@ -721,13 +721,18 @@
         }
       }
 
+      const pdfExport = isPdfExport();
+      if (pdfExport) {
+        document.documentElement.classList.add("pdf-export");
+      }
+
       Reveal.initialize({
         hash: true,
         fragmentInURL: false,
         controls: false,
         controlsTutorial: false,
         slideNumber: false,
-        progress: true,
+        progress: !pdfExport,
         width: 1280,
         height: 720,
         margin: 0,
@@ -741,7 +746,7 @@
           alwaysVisible: true,
         },
         drawer: {"toggleBoardKey":"t","toggleDrawKey":"d","colors":["#9b4d46","#5c6e54","#566578","#a38452"],"color":"#9b4d46","pathSize":4},
-        plugins: [RevealPointer, RevealDrawer],
+        plugins: pdfExport ? [] : [RevealPointer, RevealDrawer],
       }).then(() => {
         Reveal.on("slidetransitionend", (event) => {
           renderChartsForSlide(event.currentSlide);

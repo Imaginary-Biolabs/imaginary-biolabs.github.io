@@ -1234,8 +1234,9 @@ body {
 
 .slide-layout-pipeline-friction .pipeline-friction-stage--multi {
   gap: 1.35rem;
-  /* Reserve space for both pipelines — avoids layout jump on fragment reveal */
-  min-height: 15.5rem;
+  /* Tall enough for both pipelines so the first stays anchored when the second reveals */
+  min-height: 17.5rem;
+  transform: translateY(-3rem);
 }
 
 /* Reveal fragments inside slide chrome (higher specificity than layout rules) */
@@ -1249,13 +1250,14 @@ body {
   visibility: inherit;
 }
 
-/* Animated slides: optically centred (~3rem above midline); min-height prevents fragment jump */
-.slide-layout-pipeline-friction .slide-canvas-body,
+.slide-layout-pipeline-friction .slide-canvas-body {
+  justify-content: center;
+}
+
 .slide-layout-two-column .slide-canvas-body {
   justify-content: center;
 }
 
-.slide-layout-pipeline-friction .pipeline-friction-stage--multi,
 .slide-layout-two-column .workflow-stage {
   transform: translateY(-3rem);
 }
@@ -2120,4 +2122,78 @@ body.no-cursor * {
 
 .disabled .revealjs-drawer-pen_icon {
   background: var(--sand-400) !important;
+}
+
+/* PDF export — decktape / HeadlessChrome (html.pdf-export set in build-deck.mjs)
+   Keep card appearance; swap rgba borders and soft shadows for opaque equivalents
+   that Chrome's PDF engine renders cleanly (no grey halos). */
+html.pdf-export {
+  --slide-card-border: var(--sand-200);
+  --shadow-surface-soft: none;
+  --shadow-surface-subtle: none;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+html.pdf-export .reveal .progress,
+html.pdf-export .revealjs-drawer,
+html.pdf-export .revealjs-drawer-menu,
+html.pdf-export .cursor-dot,
+html.pdf-export .platform-arch-fragment {
+  display: none !important;
+}
+
+html.pdf-export .reveal .backgrounds .slide-background:not(.present) {
+  display: none !important;
+}
+
+html.pdf-export .reveal .slide-card,
+html.pdf-export .pipeline-problem.slide-card {
+  background-color: #ffffff !important;
+  border: 1px solid #ebe7e0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+html.pdf-export .pipeline-bar {
+  border: 1px solid var(--sand-200) !important;
+  box-shadow: none !important;
+}
+
+html.pdf-export .pipeline-bar--flow,
+html.pdf-export .pipeline-bar--columns:not(.pipeline-bar--flow) {
+  filter: none !important;
+}
+
+html.pdf-export .slide-chrome-header,
+html.pdf-export .slide-chrome-footer {
+  border-color: var(--sand-200) !important;
+  box-shadow: none !important;
+}
+
+html.pdf-export .reveal .slides section.slide-frame .fragment {
+  transform: none !important;
+  transition: none !important;
+}
+
+html.pdf-export .slide-layout-pipeline-friction .pipeline-friction-stage--multi,
+html.pdf-export .slide-layout-two-column .workflow-stage {
+  transform: translateY(-3rem) !important;
+}
+
+html.pdf-export .reveal .slides section.slide-frame .fragment:not(.visible) {
+  display: none !important;
+}
+
+html.pdf-export .slide-layout-platform-architecture[data-fragment="0"]
+  [data-arch-target="grumpy"].slide-card,
+html.pdf-export .slide-layout-platform-architecture[data-fragment="1"]
+  [data-arch-target="fabric"].slide-card,
+html.pdf-export .slide-layout-platform-architecture[data-fragment="2"]
+  [data-arch-target="registry"]
+  .slide-card,
+html.pdf-export .slide-layout-platform-architecture[data-fragment="3"]
+  [data-arch-target="darwin"]
+  .slide-card {
+  background-color: var(--sand-200) !important;
 }
