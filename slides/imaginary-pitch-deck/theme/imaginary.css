@@ -1,0 +1,2194 @@
+/* Imaginary slide theme — aligned with website/src/app/globals.css */
+
+@font-face {
+  font-family: "Bayon";
+  src: url("../assets/fonts/Bayon-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist";
+  src: url("../assets/fonts/GeistSans-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("../assets/fonts/GeistMono-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  --background: #faf9f7;
+  --foreground: #1e1b19;
+
+  --sand-50: #faf9f7;
+  --sand-100: #f5f3ef;
+  --sand-200: #ebe7e0;
+  --sand-300: #ddd8ce;
+  --sand-400: #b8b0a3;
+  --sand-500: #96897a;
+  --sand-600: #776b5d;
+  --sand-700: #5a5048;
+  --sand-800: #3d3733;
+  --sand-900: #1e1b19;
+
+  --ink-50: #f2f1f0;
+  --ink-100: #e3e1de;
+  --ink-200: #c8c4bf;
+  --ink-300: #9e9890;
+  --ink-400: #777067;
+  --ink-500: #5a534c;
+  --ink-600: #484240;
+  --ink-700: #383432;
+  --ink-800: #2a2725;
+  --ink-900: #1c1a18;
+
+  --ink-muted: var(--ink-400);
+
+  /* Semantic accents — see .ai/project/colors.json */
+  --color-red: #9b4d46;
+  --color-green: #5c6e54;
+  --color-yellow: #a38452;
+  --color-blue: #566578;
+  --color-error: var(--color-red);
+  --color-success: var(--color-green);
+  --color-warning: var(--color-yellow);
+  --color-info: var(--color-blue);
+
+  --shadow-surface-soft: 0 2px 18px rgb(30 27 25 / 0.035);
+  --shadow-surface-subtle: 0 1px 14px rgb(30 27 25 / 0.025);
+
+  /* Card shell — matches website SystemMap `stackCardShell` / SURFACE_CARD */
+  --paper-bright: #ffffff;
+  --slide-card-radius: 0.5rem;
+  --slide-card-border: rgb(235 231 224 / 0.45);
+  --slide-card-padding: 1.1rem 1rem;
+  --slide-card-shadow: var(--shadow-surface-subtle);
+
+  /* Slide chrome */
+  --slide-header-h: 3.25rem;
+  --slide-footer-h: 4.75rem;
+  --bg-normal: #faf9f7;
+  --bg-recess: #f5f3f0;
+
+  /* Layout system — four content zones */
+  --slide-pad-inline: 2.75rem;
+  --slide-pad-block: 1.5rem;
+  --content-max: 52rem;
+  --intermission-max: 44rem;
+  --hero-max: 50rem;
+
+  --space-title-subtitle: 0.7rem;
+  --space-header-content: 1.35rem;
+  --space-block: 1rem;
+}
+
+::selection {
+  background: var(--ink-200);
+  color: var(--ink-900);
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-normal);
+  color: var(--foreground);
+  font-family: "Geist", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.reveal-viewport,
+.reveal,
+.reveal .backgrounds,
+.reveal .slide-background,
+.reveal .slides {
+  background-color: var(--bg-normal);
+}
+
+.reveal .slide-background-content {
+  background-color: inherit;
+}
+
+.reveal {
+  font-family: "Geist", ui-sans-serif, system-ui, sans-serif;
+  font-size: 28px;
+  color: var(--foreground);
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal .slides > section {
+  padding: 0;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+}
+
+.reveal .slides section.slide-frame {
+  display: grid !important;
+  grid-template-rows: var(--slide-header-h) 1fr var(--slide-footer-h);
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4 {
+  font-family: "Geist", ui-sans-serif, system-ui, sans-serif;
+  color: var(--ink-900);
+  text-transform: none;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.reveal .controls,
+.reveal .controls-arrow,
+.reveal .slide-number {
+  display: none !important;
+}
+
+.reveal .progress {
+  height: 3px;
+}
+
+.reveal .progress span {
+  background: var(--sand-700);
+}
+
+/* ── Chrome ───────────────────────────────────────────── */
+
+.slide-chrome-header {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--slide-pad-inline);
+  border-bottom: 1px solid rgb(221 216 206 / 0.65);
+  background-color: transparent;
+}
+
+.slide-chrome-header-recess {
+  border-bottom-color: rgb(221 216 206 / 0.45);
+}
+
+.slide-wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.slide-wordmark-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  object-fit: contain;
+}
+
+.slide-wordmark-text {
+  font-family: "Bayon", sans-serif;
+  font-size: 1.125rem;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.slide-frame-body {
+  height: 100%;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.slide-chrome-footer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 1rem 2rem;
+  padding: 0.9rem var(--slide-pad-inline) 1rem;
+  border-top: 1px solid rgb(221 216 206 / 0.65);
+  background-color: transparent;
+  box-shadow: inset 0 10px 24px -18px rgb(30 27 25 / 0.04);
+}
+
+.slide-frame-recess .slide-chrome-footer {
+  box-shadow: none;
+}
+
+.slide-footer-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.22rem;
+}
+
+.slide-footer-title {
+  margin: 0;
+  font-size: 0.84rem;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: var(--ink-900);
+  max-width: 28rem;
+}
+
+.slide-footer-context {
+  margin: 0;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--sand-600);
+  max-width: 28rem;
+}
+
+.slide-footer-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+  text-align: right;
+}
+
+.slide-footer-page,
+.slide-footer-url,
+.slide-footer-copy {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+  color: var(--sand-500);
+}
+
+.slide-footer-page {
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+/* ── Content zones (layout archetypes) ───────────────── */
+
+.slide-canvas {
+  height: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+  padding: var(--slide-pad-block) var(--slide-pad-inline);
+}
+
+/* Header pinned top; main content vertically centred in remaining space */
+.slide-canvas--canvas,
+.slide-canvas--narrative,
+.slide-canvas--split {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-header-content);
+}
+
+.slide-canvas--canvas .slide-content-header,
+.slide-canvas--narrative .slide-content-header,
+.slide-canvas--split .slide-content-header {
+  flex: 0 0 auto;
+  margin-bottom: 0;
+}
+
+.slide-canvas-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  justify-content: safe center;
+}
+
+/* Narrative — reading column for bullets */
+.slide-canvas--narrative {
+  align-items: flex-start;
+}
+
+.slide-canvas--narrative .slide-content-header,
+.slide-canvas--narrative .slide-narrative-body {
+  width: 100%;
+  max-width: var(--content-max);
+}
+
+.slide-narrative-body {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Split — two balanced panels below a shared header */
+.slide-canvas--split .slide-content-header {
+  max-width: var(--content-max);
+}
+
+.slide-canvas--split .two-column-grid {
+  flex: 0 1 auto;
+  min-height: 0;
+  align-items: stretch;
+  width: 100%;
+}
+
+/* Canvas — visual layouts below a shared header */
+.slide-canvas--canvas .slide-content-header {
+  max-width: var(--content-max);
+}
+
+.slide-canvas--canvas .metrics-grid,
+.slide-canvas--canvas .chart-stage,
+.slide-canvas--canvas .persona-cards-stage,
+.slide-canvas--canvas .pipeline-friction-stage,
+.slide-canvas--canvas .workflow-stage,
+.slide-canvas--canvas .platform-architecture-stage,
+.slide-canvas--canvas .timeline-stage,
+.slide-canvas--canvas .founder-page-stage,
+.slide-canvas--canvas .final-slide-stage {
+  width: 100%;
+}
+
+/* Intermission — vertically centred pause slides (section, insight, quote) */
+.slide-canvas--intermission {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  justify-content: safe center;
+  text-align: center;
+}
+
+.slide-canvas--intermission .slide-intermission-block,
+.slide-canvas--intermission .slide-insight-block,
+.slide-canvas--intermission .slide-pull-quote {
+  width: 100%;
+  max-width: var(--intermission-max);
+}
+
+/* Hero — opening/closing, optically centred with left-aligned type */
+.slide-canvas--hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  justify-content: safe center;
+}
+
+.slide-canvas--hero .slide-hero-block {
+  width: 100%;
+  max-width: var(--hero-max);
+}
+
+/* Title slide — mono eyebrow (not Bayon wordmark) */
+.slide-layout-title .slide-eyebrow {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  text-transform: none;
+  letter-spacing: 0.04em;
+  font-size: 0.85rem;
+}
+
+.slide-layout-title .slide-meta {
+  letter-spacing: 0.02em;
+}
+
+.slide-canvas--hero .closing-links {
+  width: 100%;
+  max-width: var(--hero-max);
+}
+
+/* ── Typography blocks ────────────────────────────────── */
+
+.slide-content-header {
+  margin-bottom: var(--space-header-content);
+}
+
+.slide-eyebrow {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sand-600);
+  margin: 0 0 var(--space-block);
+  line-height: 1.2;
+}
+
+.slide-eyebrow-brand {
+  font-family: "Bayon", sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+}
+
+.slide-eyebrow--intermission {
+  font-size: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.slide-heading {
+  font-size: 2.35rem !important;
+  line-height: 1.12 !important;
+  margin: 0 !important;
+  color: var(--ink-900) !important;
+}
+
+.slide-heading--intermission {
+  font-size: 2.75rem !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.03em !important;
+}
+
+.slide-heading-hero {
+  font-size: 3.25rem !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.035em !important;
+}
+
+.slide-subheading {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: var(--sand-700);
+  margin: var(--space-title-subtitle) 0 0 !important;
+  max-width: 42rem;
+}
+
+.slide-subheading--intermission {
+  font-size: 1.3rem;
+  max-width: 36rem;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.slide-subheading--hero {
+  font-size: 1.45rem;
+  max-width: 40rem;
+}
+
+.slide-meta {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.95rem;
+  color: var(--sand-500);
+  margin: var(--space-title-subtitle) 0 0;
+}
+
+/* ── Narrative content ────────────────────────────────── */
+
+.slide-bullets {
+  margin: 0;
+  padding-left: 1.3rem;
+  font-size: 1.3rem;
+  line-height: 1.55;
+}
+
+.slide-bullets li {
+  margin-bottom: 0.7rem;
+}
+
+.slide-bullets li:last-child {
+  margin-bottom: 0;
+}
+
+.slide-bullets li::marker {
+  color: var(--sand-600);
+}
+
+.slide-note {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--sand-200);
+  font-size: 1rem;
+  color: var(--ink-muted);
+  font-style: italic;
+}
+
+/* ── Shared card shell (website stackCardShell) ─────────── */
+
+.slide-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: var(--slide-card-padding);
+  border-radius: var(--slide-card-radius);
+  border: 1px solid var(--slide-card-border);
+  background: var(--paper-bright);
+  box-shadow: var(--slide-card-shadow);
+}
+
+.slide-card--horizontal {
+  flex-direction: row;
+  align-items: center;
+  text-align: left;
+  gap: 0.75rem;
+}
+
+.slide-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  width: 100%;
+}
+
+.slide-card--horizontal .slide-card-body {
+  align-items: flex-start;
+  flex: 1 1 auto;
+  width: auto;
+}
+
+.slide-card-icon,
+.slide-card-avatar {
+  flex: 0 0 auto;
+  width: 2.25rem;
+  height: 2.25rem;
+  object-fit: contain;
+}
+
+.slide-card-avatar {
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--sand-50);
+  border: 1px solid var(--slide-card-border);
+  margin-bottom: 0.55rem;
+}
+
+.slide-card-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-card--horizontal .slide-card-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+.slide-card:not(.slide-card--horizontal) .slide-card-icon {
+  margin-bottom: 0.45rem;
+}
+
+.slide-card--horizontal .slide-card-avatar {
+  margin-bottom: 0;
+}
+
+.slide-card--panel,
+.slide-card--metric {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.slide-card-icon--placeholder,
+.slide-card-avatar--placeholder {
+  background: var(--sand-100);
+  border-radius: 0.375rem;
+}
+
+.slide-card-title {
+  margin: 0 0 0.2rem !important;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  line-height: 1.25 !important;
+  color: var(--ink-900) !important;
+  letter-spacing: -0.01em !important;
+}
+
+.slide-card-description {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.38;
+  color: var(--sand-700);
+}
+
+.slide-card-eyebrow {
+  margin: 0 0 0.4rem;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sand-500);
+  line-height: 1;
+}
+
+/* ── Workflow outcomes (slide 8 — mirrors pipeline blocks) ─ */
+
+.workflow-stage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.workflow-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  width: 100%;
+  align-items: start;
+}
+
+.workflow-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.workflow-outcomes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.workflow-outcome.slide-card {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.22rem;
+  width: 100%;
+  height: auto;
+  padding: 0.85rem 0.95rem;
+  text-align: left;
+}
+
+.workflow-outcome-lead {
+  font-family: "Geist", ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.94rem;
+  font-weight: 600;
+  line-height: 1.32;
+  letter-spacing: -0.018em;
+  color: var(--ink-900);
+}
+
+.workflow-outcome-detail {
+  font-family: "Geist", ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.84rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--sand-700);
+}
+
+.slide-layout-two-column .slide-canvas--canvas {
+  padding-inline: 1.15rem;
+}
+
+.slide-layout-two-column .slide-content-header {
+  max-width: 100%;
+}
+
+.slide-layout-two-column .workflow-grid {
+  gap: 2.25rem;
+}
+
+.slide-layout-two-column .workflow-block {
+  gap: 0;
+}
+
+.slide-layout-two-column .workflow-block .pipeline-block-title {
+  margin: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--sand-500);
+  line-height: 1.3;
+}
+
+.slide-layout-two-column .workflow-block-heading {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0 0.8rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid rgb(235 231 224 / 0.85);
+}
+
+.slide-layout-two-column .workflow-block-heading .persona-avatar .bi {
+  font-size: 1.25rem;
+}
+
+.slide-layout-two-column .workflow-outcome.slide-card {
+  padding: 0.95rem 1.05rem;
+}
+
+.slide-layout-two-column .workflow-outcome-lead {
+  font-size: 0.94rem;
+  line-height: 1.34;
+}
+
+.slide-layout-two-column .workflow-outcome-detail {
+  font-size: 0.86rem;
+  line-height: 1.42;
+}
+
+.slide-layout-two-column .workflow-outcomes {
+  gap: 0.7rem;
+}
+
+/* ── Split panels (legacy two-column card layout) ─────── */
+
+.two-column-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  width: 100%;
+  align-items: stretch;
+}
+
+.column-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+.slide-layout-two-column .column-panel.slide-card--panel {
+  padding: 1.35rem 1.25rem 1.4rem;
+  align-items: stretch;
+  text-align: left;
+}
+
+.column-heading {
+  flex: 0 0 auto;
+  margin: 0 0 1.1rem !important;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--sand-200);
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.72rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--sand-500) !important;
+  line-height: 1.3 !important;
+}
+
+.column-panel .slide-bullets--outcomes {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-height: 0;
+}
+
+.outcome-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin: 0;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgb(235 231 224 / 0.7);
+}
+
+.outcome-item:first-child {
+  padding-top: 0;
+}
+
+.outcome-item:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.outcome-lead {
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.28;
+  letter-spacing: -0.015em;
+  color: var(--ink-900);
+}
+
+.outcome-detail {
+  font-size: 0.84rem;
+  line-height: 1.38;
+  color: var(--sand-600);
+}
+
+.column-panel .slide-bullets {
+  font-size: 1.15rem;
+  flex: 1 1 auto;
+}
+
+/* ── Metrics ──────────────────────────────────────────── */
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.15rem;
+  width: 100%;
+  align-items: stretch;
+}
+
+.metric-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.metric-value {
+  font-size: 2.35rem;
+  font-weight: 600;
+  margin: 0 0 0.35rem;
+  letter-spacing: -0.03em;
+  color: var(--ink-900);
+}
+
+.metric-label {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--sand-700);
+}
+
+.metric-hint {
+  margin: 0.45rem 0 0;
+  font-size: 0.88rem;
+  color: var(--ink-muted);
+}
+
+/* ── Persona cards ────────────────────────────────────── */
+
+.slide-layout-persona-cards .slide-canvas--canvas {
+  padding-inline: 1.15rem;
+}
+
+.slide-layout-persona-cards .slide-content-header {
+  max-width: 100%;
+}
+
+.persona-cards-stage {
+  width: 100%;
+}
+
+.persona-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--persona-count, 4), minmax(0, 1fr));
+  gap: 1.25rem;
+  width: 100%;
+  align-items: stretch;
+}
+
+.persona-cards-grid--duo {
+  gap: 1.5rem;
+  max-width: 54rem;
+  margin-inline: auto;
+}
+
+.slide-layout-persona-cards .slide-card--persona {
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  gap: 0.95rem;
+  height: auto;
+  padding: 1.75rem 1.5rem;
+}
+
+.slide-layout-persona-cards .slide-card-body {
+  align-items: center;
+  width: 100%;
+}
+
+.persona-avatar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.persona-avatar .bi {
+  font-size: 3.75rem;
+  line-height: 1;
+  color: var(--ink-700);
+}
+
+.slide-layout-persona-cards .slide-card-title {
+  font-size: 1.05rem !important;
+  margin-bottom: 0.35rem !important;
+  text-align: center;
+}
+
+.slide-layout-persona-cards .slide-card-description {
+  font-size: 0.94rem;
+  line-height: 1.45;
+  color: var(--sand-700);
+  text-align: center;
+  max-width: 22rem;
+}
+
+.slide-layout-persona-cards .persona-cards-stage {
+  display: flex;
+  flex-direction: column;
+}
+
+.slide-layout-persona-cards .slide-note {
+  margin-top: 0.75rem;
+  width: 100%;
+}
+
+/* ── Pipeline friction ─────────────────────────────────── */
+
+.pipeline-friction-stage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.pipeline-friction-stage--multi {
+  gap: 1.35rem;
+}
+
+.pipeline-block {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.pipeline-block-title {
+  margin: 0 0 0.15rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink-900);
+  line-height: 1.2;
+}
+
+.slide-layout-pipeline-friction .pipeline-block-title {
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid rgb(235 231 224 / 0.85);
+  font-size: 1.12rem;
+  font-weight: 600;
+}
+
+.pipeline-bar {
+  display: flex;
+  width: 100%;
+  min-height: 5.25rem;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--sand-200);
+  box-shadow: var(--shadow-surface-soft);
+}
+
+.pipeline-bar:not(.pipeline-bar--columns) {
+  border: 1px solid var(--sand-200);
+  box-shadow: var(--shadow-surface-soft);
+}
+
+.pipeline-bar--columns {
+  align-items: stretch;
+  overflow: visible;
+  min-height: 0;
+  border: none;
+  box-shadow: none;
+}
+
+.pipeline-bar--flow {
+  --pipeline-chevron: 0.7rem;
+  filter: drop-shadow(0 2px 14px rgb(30 27 25 / 0.04));
+}
+
+.pipeline-block-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  width: 100%;
+}
+
+.pipeline-frictions-row {
+  display: grid;
+  grid-template-columns: repeat(var(--phase-count, 4), minmax(0, 1fr));
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.pipeline-friction-cell {
+  min-width: 0;
+}
+
+.pipeline-bar--flow .pipeline-column {
+  flex: 1 1 0;
+  margin-left: calc(-1 * var(--pipeline-chevron));
+  min-width: 0;
+  display: block;
+}
+
+.pipeline-bar--flow .pipeline-column:first-child {
+  margin-left: 0;
+}
+
+.pipeline-bar--flow .pipeline-segment {
+  position: relative;
+  min-height: 2.35rem;
+  padding: 0.35rem calc(0.45rem + var(--pipeline-chevron));
+  border: none;
+  border-radius: 0;
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--pipeline-chevron)) 0,
+    100% 50%,
+    calc(100% - var(--pipeline-chevron)) 100%,
+    0 100%,
+    var(--pipeline-chevron) 50%
+  );
+}
+
+.pipeline-bar--flow .pipeline-segment--first {
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--pipeline-chevron)) 0,
+    100% 50%,
+    calc(100% - var(--pipeline-chevron)) 100%,
+    0 100%
+  );
+  padding-left: 0.55rem;
+  border-top-left-radius: 0.35rem;
+  border-bottom-left-radius: 0.35rem;
+}
+
+.pipeline-bar--flow .pipeline-segment--last {
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    0 100%,
+    var(--pipeline-chevron) 50%
+  );
+  padding-right: 0.55rem;
+  border-top-right-radius: 0.35rem;
+  border-bottom-right-radius: 0.35rem;
+}
+
+.pipeline-bar--flow .pipeline-segment--only {
+  clip-path: none;
+  border-radius: 0.35rem;
+  padding-inline: 0.55rem;
+}
+
+.pipeline-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+.pipeline-segment-frictions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  min-height: 3.35rem;
+}
+
+.pipeline-segment-frictions--empty {
+  min-height: 0;
+}
+
+.pipeline-segment-frictions .pipeline-problem {
+  flex: 1 1 auto;
+  height: 100%;
+}
+
+.pipeline-bar--columns:not(.pipeline-bar--flow) {
+  filter: drop-shadow(0 2px 18px rgb(30 27 25 / 0.035));
+}
+
+.pipeline-bar--columns:not(.pipeline-bar--flow) .pipeline-column:first-child .pipeline-segment {
+  border-left: 1px solid var(--sand-200);
+}
+
+.pipeline-bar--columns:not(.pipeline-bar--flow) .pipeline-column:last-child .pipeline-segment {
+  border-right: 1px solid var(--sand-200);
+}
+
+.pipeline-bar--columns:not(.pipeline-bar--flow) .pipeline-segment {
+  border-top: 1px solid var(--sand-200);
+  border-bottom: 1px solid var(--sand-200);
+  flex: 1 1 auto;
+  min-height: 4.35rem;
+  border-right: 1px solid rgb(30 27 25 / 0.1);
+  border-radius: 0;
+}
+
+.pipeline-bar--columns:not(.pipeline-bar--flow) .pipeline-column:first-child .pipeline-segment {
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
+}
+
+.pipeline-bar--columns:not(.pipeline-bar--flow) .pipeline-column:last-child .pipeline-segment {
+  border-right: none;
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+
+.pipeline-segment {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  padding: 0.65rem 0.55rem;
+  text-align: center;
+  border-right: 1px solid rgb(30 27 25 / 0.1);
+  min-width: 0;
+}
+
+.pipeline-segment:last-child {
+  border-right: none;
+}
+
+.pipeline-segment-label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+}
+
+.pipeline-segment-share {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  line-height: 1;
+  opacity: 0.88;
+}
+
+.pipeline-problems {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.pipeline-problem.slide-card {
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.4rem;
+  height: auto;
+  width: 100%;
+  padding: 0.55rem 0.5rem;
+  text-align: left;
+}
+
+.pipeline-problem {
+  margin: 0;
+  padding: 0.65rem 0.55rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.4rem;
+  text-align: left;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.32;
+  letter-spacing: -0.015em;
+  color: var(--ink-900);
+}
+
+.pipeline-problem-icon {
+  flex: 0 0 auto;
+  width: 0.82rem;
+  height: 0.82rem;
+  margin: 0;
+}
+
+.pipeline-problem-text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.slide-layout-pipeline-friction .pipeline-problem {
+  padding: 0.55rem 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1.28;
+}
+
+.slide-layout-pipeline-friction .pipeline-problem-icon {
+  width: 0.75rem;
+  height: 0.75rem;
+  margin: 0;
+}
+
+.slide-layout-pipeline-friction .slide-canvas--canvas {
+  padding-inline: 1.15rem;
+}
+
+.slide-layout-pipeline-friction .pipeline-friction-stage--multi {
+  gap: 1.1rem;
+}
+
+/* Reveal fragments inside slide chrome (higher specificity than layout rules) */
+.reveal .slides section.slide-frame .fragment:not(.visible) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.reveal .slides section.slide-frame .fragment.visible {
+  opacity: 1;
+  visibility: inherit;
+}
+
+.slide-layout-pipeline-friction .slide-canvas-body {
+  justify-content: center;
+}
+
+.slide-layout-two-column .slide-canvas-body {
+  justify-content: center;
+}
+
+.slide-layout-platform-architecture .slide-canvas-body {
+  justify-content: flex-start;
+  padding-top: 0.35rem;
+}
+
+.slide-layout-two-column .workflow-grid {
+  align-items: start;
+}
+
+.slide-layout-pipeline-friction .pipeline-block {
+  gap: 0.55rem;
+}
+
+.slide-layout-pipeline-friction .pipeline-bar--flow .pipeline-segment {
+  min-height: 2.1rem;
+  padding-block: 0.3rem;
+}
+
+.slide-layout-pipeline-friction .pipeline-segment-label {
+  font-size: 0.72rem;
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+}
+
+.slide-layout-pipeline-friction .pipeline-segment-frictions {
+  min-height: 2.85rem;
+  gap: 0.45rem;
+}
+
+.slide-layout-pipeline-friction .pipeline-block-body {
+  gap: 0.45rem;
+}
+
+.slide-layout-pipeline-friction .pipeline-frictions-row {
+  gap: 0.45rem;
+}
+
+.slide-layout-pipeline-friction .pipeline-column {
+  gap: 0.45rem;
+}
+
+.slide-layout-pipeline-friction .slide-content-header {
+  max-width: 100%;
+}
+
+.slide-layout-pipeline-friction .slide-note {
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+/* ── Timeline ─────────────────────────────────────────── */
+
+.slide-layout-timeline {
+  --timeline-bleed: 1.15rem;
+}
+
+.slide-layout-timeline .slide-canvas--canvas {
+  padding-inline: var(--timeline-bleed);
+}
+
+.slide-layout-timeline .slide-content-header {
+  max-width: 100%;
+}
+
+.slide-layout-timeline .timeline-stage {
+  margin-top: -3rem;
+}
+
+.timeline-stage {
+  width: 100%;
+}
+
+.timeline-graphic {
+  --timeline-marker-size: 0.72rem;
+  --timeline-marker-now-size: 0.95rem;
+  width: 100%;
+}
+
+.timeline-track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: calc(var(--timeline-marker-now-size) + 8px);
+}
+
+.timeline-rail {
+  position: absolute;
+  left: calc(-1 * var(--timeline-bleed, 1.15rem));
+  right: calc(-1 * var(--timeline-bleed, 1.15rem));
+  top: 50%;
+  height: 2px;
+  transform: translateY(-50%);
+  background: var(--sand-400);
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.timeline-rail::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    var(--ink-500) 0%,
+    var(--ink-500) 38%,
+    var(--color-red) 50%,
+    transparent 62%,
+    transparent 100%
+  );
+}
+
+.timeline-markers {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(var(--timeline-count, 6), minmax(0, 1fr));
+  gap: 0.45rem;
+  width: 100%;
+}
+
+.timeline-marker-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline-labels {
+  display: grid;
+  grid-template-columns: repeat(var(--timeline-count, 6), minmax(0, 1fr));
+  gap: 0.45rem;
+  width: 100%;
+  margin-top: 0.85rem;
+}
+
+.timeline-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 0;
+  padding: 0 0.15rem;
+}
+
+.timeline-node-marker {
+  flex-shrink: 0;
+  width: var(--timeline-marker-size);
+  height: var(--timeline-marker-size);
+  border-radius: 50%;
+  background: var(--paper-bright);
+  border: 2px solid var(--ink-500);
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.timeline-node-marker--past {
+  background: var(--ink-700);
+  border-color: var(--ink-700);
+}
+
+.timeline-node-marker--now {
+  width: var(--timeline-marker-now-size);
+  height: var(--timeline-marker-now-size);
+  background: var(--color-red);
+  border-color: var(--color-red);
+  box-shadow: 0 0 0 4px rgb(155 77 70 / 0.12);
+}
+
+.timeline-node-marker--future {
+  background: var(--paper-bright);
+  border-color: var(--sand-400);
+}
+
+.timeline-node-date {
+  margin: 0 0 0.25rem;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: var(--sand-500);
+}
+
+.timeline-node--now .timeline-node-date {
+  color: var(--color-red);
+  font-weight: 600;
+}
+
+.timeline-node-label {
+  margin: 0 0 0.2rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+  color: var(--ink-900);
+}
+
+.timeline-node-description {
+  margin: 0;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  color: var(--sand-700);
+}
+
+.timeline-node--future .timeline-node-label,
+.timeline-node--future .timeline-node-description {
+  color: var(--sand-600);
+}
+
+/* ── Platform architecture ──────────────────────────────── */
+
+.slide-layout-platform-architecture {
+  --platform-cols: 10;
+  --platform-registry-span: 2;
+  --platform-feature-span: 4;
+  --platform-card-min-height: 7.25rem;
+}
+
+.slide-layout-platform-architecture .slide-canvas--canvas {
+  padding-inline: var(--slide-pad-inline);
+}
+
+.slide-layout-platform-architecture .slide-content-header {
+  max-width: 100%;
+}
+
+.platform-architecture-stage {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.platform-layer-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  width: 100%;
+}
+
+.platform-layer-label {
+  width: 100%;
+  margin: 0 0 0.15rem;
+  text-align: center;
+}
+
+.platform-layer-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--platform-cols), minmax(0, 1fr));
+  gap: 0.5rem;
+  width: 100%;
+  align-items: stretch;
+}
+
+.platform-layer-grid > .slide-card {
+  grid-column: span var(--platform-registry-span);
+  min-height: var(--platform-card-min-height);
+  height: 100%;
+  justify-content: center;
+}
+
+.platform-layer-grid--single > .slide-card {
+  grid-column: 4 / span var(--platform-feature-span);
+}
+
+.platform-layer-grid--duo > .slide-card:nth-child(1) {
+  grid-column: 2 / span var(--platform-feature-span);
+}
+
+.platform-layer-grid--duo > .slide-card:nth-child(2) {
+  grid-column: 6 / span var(--platform-feature-span);
+}
+
+.reveal .slides section.slide-frame .platform-layer-row {
+  height: auto !important;
+  width: 100% !important;
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+}
+
+.slide-layout-platform-architecture .platform-layer-grid .slide-card {
+  align-items: center;
+  text-align: center;
+  padding: 0.75rem 0.55rem;
+}
+
+.slide-layout-platform-architecture .platform-layer-grid .slide-card-body {
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+}
+
+.slide-layout-platform-architecture .platform-layer-grid .slide-card-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.slide-layout-platform-architecture .platform-layer-grid .slide-card-title {
+  font-size: 0.8125rem !important;
+}
+
+.slide-layout-platform-architecture .platform-layer-grid .slide-card-description {
+  font-size: 0.74rem;
+  line-height: 1.32;
+}
+
+/* Platform architecture — fragment step highlights (background only) */
+.platform-arch-fragment {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.slide-layout-platform-architecture .platform-layer-grid .slide-card {
+  transition: background-color 0.35s ease;
+}
+
+.slide-layout-platform-architecture[data-fragment="0"]
+  [data-arch-target="grumpy"].slide-card,
+.slide-layout-platform-architecture[data-fragment="1"]
+  [data-arch-target="fabric"].slide-card,
+.slide-layout-platform-architecture[data-fragment="2"]
+  [data-arch-target="registry"]
+  .slide-card,
+.slide-layout-platform-architecture[data-fragment="3"]
+  [data-arch-target="darwin"]
+  .slide-card {
+  background-color: var(--sand-200);
+}
+
+/* ── Founder page ─────────────────────────────────────── */
+
+.slide-layout-founder .slide-canvas--canvas,
+.slide-layout-final .slide-canvas--canvas {
+  padding-inline: 1.15rem;
+}
+
+.slide-layout-founder .slide-content-header,
+.slide-layout-final .slide-content-header {
+  max-width: 100%;
+}
+
+.founder-page-stage,
+.final-slide-stage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.slide-layout-founder .founder-page-stage {
+  flex: 1 1 auto;
+  min-height: 0;
+  justify-content: center;
+}
+
+.founder-stage {
+  display: grid;
+  grid-template-columns: minmax(6.5rem, 0.72fr) minmax(0, 1.55fr) minmax(5.5rem, 0.68fr);
+  gap: 1rem;
+  align-items: center;
+  width: 100%;
+}
+
+.founder-profile-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  text-align: center;
+}
+
+.founder-experience-col {
+  min-width: 0;
+}
+
+.founder-connect-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.founder-avatar {
+  flex-shrink: 0;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--slide-card-border);
+  background: var(--sand-50);
+}
+
+.founder-avatar--initials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--ink-800);
+  background: linear-gradient(180deg, #ffffff 0%, var(--sand-100) 100%);
+}
+
+.founder-name {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--ink-900);
+}
+
+.founder-subtitle {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.35;
+  color: var(--sand-600);
+  text-align: center;
+  max-width: 11rem;
+}
+
+.founder-entries {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--slide-card-border);
+  border-radius: var(--slide-card-radius, 0.5rem);
+  background: #fff;
+  overflow: hidden;
+  height: 100%;
+}
+
+.founder-entry {
+  display: grid;
+  grid-template-columns: 4.75rem minmax(0, 1fr);
+  gap: 0.65rem;
+  align-items: baseline;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid rgb(235 231 224 / 0.85);
+}
+
+.founder-entry:last-child {
+  border-bottom: none;
+}
+
+.founder-entry-label {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--sand-500);
+}
+
+.founder-entry-text {
+  font-size: 0.84rem;
+  line-height: 1.35;
+  color: var(--ink-900);
+}
+
+.founder-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem 0.6rem;
+}
+
+.founder-links--stacked {
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 0.3rem;
+}
+
+.founder-link {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.68rem;
+  line-height: 1.35;
+  color: var(--sand-600);
+  letter-spacing: 0.01em;
+  text-align: center;
+  word-break: break-all;
+}
+
+.founder-link-sep {
+  color: var(--sand-400);
+  font-size: 0.82rem;
+  user-select: none;
+}
+
+.founder-qr {
+  flex-shrink: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.founder-qr-image {
+  display: block;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 0.35rem;
+}
+
+.founder-qr-label {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sand-500);
+  text-align: center;
+}
+
+.slide-layout-founder .slide-note {
+  margin-top: 0.75rem;
+  width: 100%;
+  border-top: none;
+  padding-top: 0;
+  font-style: normal;
+  font-size: 0.88rem;
+}
+
+/* ── Final slide ──────────────────────────────────────── */
+
+.slide-layout-final .final-slide-stage {
+  align-items: stretch;
+}
+
+.final-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 34rem) 1fr;
+  gap: 2rem;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  margin-top: -3rem;
+}
+
+.final-main-col {
+  width: 100%;
+  min-width: 0;
+}
+
+.final-asks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+  width: 100%;
+}
+
+.final-ask.slide-card {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  width: 100%;
+  height: auto;
+  padding: 0.9rem 0.95rem;
+  text-align: left;
+}
+
+.final-signup.slide-card {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.15rem;
+  width: min(22rem, 100%);
+  aspect-ratio: 1;
+  height: auto !important;
+  min-height: 0;
+  padding: 1.75rem 1.55rem;
+  text-align: center;
+  justify-self: center;
+  align-self: center;
+}
+
+.final-signup-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 15rem;
+}
+
+.final-signup-wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  max-width: 100%;
+}
+
+.final-signup-wordmark-icon {
+  flex-shrink: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  object-fit: contain;
+}
+
+.final-signup-wordmark-text {
+  font-family: "Bayon", sans-serif;
+  font-size: 1.35rem;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: var(--ink-900);
+  text-align: left;
+}
+
+.final-signup-logo-full {
+  display: block;
+  width: 100%;
+  max-width: 13.5rem;
+  height: auto;
+  object-fit: contain;
+}
+
+.final-signup-logo {
+  display: block;
+  width: 4.5rem;
+  height: 4.5rem;
+  object-fit: contain;
+}
+
+.final-signup-tagline {
+  margin: 0;
+  font-family: "Geist", ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  text-transform: none;
+  color: var(--ink-900);
+  max-width: 13.5rem;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.final-signup-url {
+  margin: 0;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: var(--sand-600);
+  letter-spacing: 0.01em;
+}
+
+.final-signup-qr {
+  flex-shrink: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.final-signup-qr-image {
+  display: block;
+  width: 7.25rem;
+  height: 7.25rem;
+  border-radius: 0.35rem;
+}
+
+.final-signup-qr-label {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sand-500);
+  text-align: center;
+}
+
+.final-ask-title {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sand-500);
+}
+
+.final-ask-text {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--ink-900);
+}
+
+.final-url {
+  margin: 0;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgb(235 231 224 / 0.85);
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink-900);
+}
+
+.final-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 0.35rem;
+  border-top: 1px solid rgb(235 231 224 / 0.85);
+}
+
+.final-logo {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
+}
+
+.final-contacts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.65rem;
+}
+
+.final-contact {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: var(--sand-600);
+}
+
+.final-contact-sep {
+  color: var(--sand-400);
+  font-size: 0.78rem;
+  user-select: none;
+}
+
+.final-footer {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  color: var(--sand-600);
+  font-style: italic;
+}
+
+.slide-layout-final .slide-eyebrow--section {
+  margin-bottom: 0.35rem;
+}
+
+/* ── Charts ───────────────────────────────────────────── */
+
+.chart-stage {
+  width: 100%;
+}
+
+.chart-canvas {
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 14rem;
+  height: 100%;
+}
+
+.chart-caption {
+  flex: 0 0 auto;
+  margin: 0.75rem 0 0;
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+}
+
+/* ── Insight intermission ─────────────────────────────── */
+
+.slide-insight-block {
+  margin: 0;
+}
+
+.slide-insight {
+  font-size: 2rem;
+  line-height: 1.35;
+  margin: 0;
+  color: var(--sand-800);
+}
+
+.slide-insight-detail {
+  font-size: 1.25rem;
+  line-height: 1.45;
+  margin: 1.25rem 0 0;
+  color: var(--sand-600);
+}
+
+/* ── Quote intermission ───────────────────────────────── */
+
+.slide-pull-quote {
+  margin: 0;
+}
+
+.slide-pull-quote p {
+  font-size: 2rem;
+  line-height: 1.35;
+  margin: 0 0 1rem;
+  color: var(--sand-800);
+}
+
+.slide-quote-attribution {
+  font-size: 1.05rem;
+  color: var(--sand-600);
+}
+
+/* ── Closing hero ─────────────────────────────────────── */
+
+.closing-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.5rem;
+}
+
+.closing-link {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.9rem;
+  color: var(--sand-700);
+  background: var(--sand-100);
+  border: 1px solid var(--sand-200);
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+}
+
+/* Presenter pointer — reveal.js-pointer (toggle Q) */
+body.no-cursor,
+body.no-cursor * {
+  cursor: none !important;
+}
+
+.cursor-dot {
+  position: fixed;
+  z-index: 9999;
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: 0 0 0 2px rgb(250 249 247 / 0.65);
+}
+
+/* Drawing board — reveal.js-drawer */
+.revealjs-drawer-menu {
+  background-color: rgb(245 243 239 / 0.92);
+  border: 1px solid var(--sand-200);
+  box-shadow: var(--shadow-surface-soft);
+}
+
+.revealjs-drawer-color_picker {
+  border-color: var(--sand-200) !important;
+}
+
+.revealjs-drawer-pen_icon {
+  background: var(--ink-600);
+}
+
+.disabled .revealjs-drawer-pen_icon {
+  background: var(--sand-400) !important;
+}
+
+/* PDF export — decktape / HeadlessChrome (html.pdf-export set in build-deck.mjs)
+   Keep card appearance; swap rgba borders and soft shadows for opaque equivalents
+   that Chrome's PDF engine renders cleanly (no grey halos). */
+html.pdf-export {
+  --slide-card-border: var(--sand-200);
+  --shadow-surface-soft: none;
+  --shadow-surface-subtle: none;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+html.pdf-export .reveal .progress,
+html.pdf-export .revealjs-drawer,
+html.pdf-export .revealjs-drawer-menu,
+html.pdf-export .cursor-dot,
+html.pdf-export .platform-arch-fragment {
+  display: none !important;
+}
+
+html.pdf-export .reveal .backgrounds .slide-background:not(.present) {
+  display: none !important;
+}
+
+html.pdf-export .reveal .slide-card,
+html.pdf-export .pipeline-problem.slide-card {
+  background-color: #ffffff !important;
+  border: 1px solid #ebe7e0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+html.pdf-export .pipeline-bar {
+  border: 1px solid var(--sand-200) !important;
+  box-shadow: none !important;
+}
+
+html.pdf-export .pipeline-bar--flow,
+html.pdf-export .pipeline-bar--columns:not(.pipeline-bar--flow) {
+  filter: none !important;
+}
+
+html.pdf-export .slide-chrome-header,
+html.pdf-export .slide-chrome-footer {
+  border-color: var(--sand-200) !important;
+  box-shadow: none !important;
+}
+
+html.pdf-export .reveal .slides section.slide-frame .fragment {
+  transform: none !important;
+  transition: none !important;
+}
+
+html.pdf-export .reveal .slides section.slide-frame .fragment:not(.visible) {
+  display: none !important;
+}
+
+html.pdf-export .slide-layout-platform-architecture[data-fragment="0"]
+  [data-arch-target="grumpy"].slide-card,
+html.pdf-export .slide-layout-platform-architecture[data-fragment="1"]
+  [data-arch-target="fabric"].slide-card,
+html.pdf-export .slide-layout-platform-architecture[data-fragment="2"]
+  [data-arch-target="registry"]
+  .slide-card,
+html.pdf-export .slide-layout-platform-architecture[data-fragment="3"]
+  [data-arch-target="darwin"]
+  .slide-card {
+  background-color: var(--sand-200) !important;
+}
