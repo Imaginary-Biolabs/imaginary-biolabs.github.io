@@ -1234,6 +1234,7 @@
       const chartConfigs = [
       
       ];
+      const pdfRasterFallback = {"assets/imaginary_schema.svg":"assets/imaginary_schema.png","assets/lab-in-the-loop.svg":"assets/lab-in-the-loop.png","assets/ups_and_downs.svg":"assets/ups_and_downs.png","assets/loop_1.svg":"assets/loop_1.png","assets/loop_2.svg":"assets/loop_2.png","assets/loop_3.svg":"assets/loop_3.png"};
       const chartInstances = new Map();
 
       function isPdfExport() {
@@ -1358,6 +1359,31 @@
       function hydratePromptExamplesWiringForExport(slide) {
         if (!isPromptExamplesWiringSlide(slide)) return;
         schedulePromptExamplesWiringSync(slide);
+      }
+
+      function applyPdfRasterFallback() {
+        for (const img of document.querySelectorAll("img[src]")) {
+          const src = img.getAttribute("src");
+          const png = pdfRasterFallback[src];
+          if (png) img.setAttribute("src", png);
+        }
+      }
+
+      function waitForImagesToSettle(root) {
+        const imgs = [...root.querySelectorAll("img")];
+        return Promise.all(
+          imgs.map(
+            (img) =>
+              new Promise((resolve) => {
+                if (img.complete && img.naturalWidth > 0) {
+                  resolve();
+                  return;
+                }
+                img.addEventListener("load", () => resolve(), { once: true });
+                img.addEventListener("error", () => resolve(), { once: true });
+              })
+          )
+        );
       }
 
       function syncPromptExamplesWiring(slide) {
@@ -1617,6 +1643,7 @@
       const pdfExport = isPdfExport();
       if (pdfExport) {
         document.documentElement.classList.add("pdf-export");
+        applyPdfRasterFallback();
       }
 
       const SLIDE_BASE_WIDTH = 1280;
@@ -1773,7 +1800,11 @@ function bindPreziZoom() {
         },
         drawer: {"toggleBoardKey":"t","toggleDrawKey":"d","colors":["#9b4d46","#5c6e54","#566578","#a38452"],"color":"#9b4d46","pathSize":4},
         plugins: pdfExport ? [] : [RevealPointer, RevealDrawer],
-      }).then(() => {
+      }).then(async () => {
+        if (pdfExport) {
+          await waitForImagesToSettle(document);
+          Reveal.layout();
+        }
         syncPresentationViewport();
         function syncViewportAndPromptWiring() {
           syncPresentationViewport();
